@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 20150601201432) do
 
   create_table "schools", force: :cascade do |t|
     t.string   "title"
-    t.date     "start_year"
-    t.date     "end_year"
+    t.date     "date"
+    t.date     "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
