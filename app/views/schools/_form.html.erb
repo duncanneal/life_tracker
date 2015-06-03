@@ -11,17 +11,20 @@
     </div>
   <% end %>
 
+  <p><%= f.label (:person) %></p>
+  <%= f.collection_select(:person_id, Person.all, :id, :full_name) %>
+
   <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
   </div>
   <div class="field">
     <%= f.label :start_year %><br>
-    <%= f.date_select :start_year %>
+    <%= f.number_field :start_year %>
   </div>
   <div class="field">
     <%= f.label :end_year %><br>
-    <%= f.date_select :end_year %>
+    <%= f.number_field :end_year %>
   </div>
   <div class="actions">
     <%= f.submit %>

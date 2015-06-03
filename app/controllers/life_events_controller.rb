@@ -8,7 +8,6 @@ class LifeEventsController < ApplicationController
   end
 
   # GET /life_events/1
-  # GET /life_events/1.json
   def show
   end
 
@@ -22,7 +21,6 @@ class LifeEventsController < ApplicationController
   end
 
   # POST /life_events
-  # POST /life_events.json
   def create
     @life_event = LifeEvent.new(life_event_params)
 
@@ -38,26 +36,21 @@ class LifeEventsController < ApplicationController
   end
 
   # PATCH/PUT /life_events/1
-  # PATCH/PUT /life_events/1.json
   def update
     respond_to do |format|
       if @life_event.update(life_event_params)
         format.html { redirect_to @life_event, notice: 'Life event was successfully updated.' }
-        format.json { render :show, status: :ok, location: @life_event }
       else
         format.html { render :edit }
-        format.json { render json: @life_event.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # DELETE /life_events/1
-  # DELETE /life_events/1.json
   def destroy
     @life_event.destroy
     respond_to do |format|
       format.html { redirect_to life_events_url, notice: 'Life event was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
@@ -69,6 +62,6 @@ class LifeEventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def life_event_params
-      params.require(:life_event).permit(:title, :date, :description)
+      params.require(:life_event).permit(:title, :year, :description)
     end
 end
