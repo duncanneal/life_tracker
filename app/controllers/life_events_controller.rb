@@ -2,7 +2,6 @@ class LifeEventsController < ApplicationController
   before_action :set_life_event, only: [:show, :edit, :update, :destroy]
 
   # GET /life_events
-  # GET /life_events.json
   def index
     @life_events = LifeEvent.all
   end

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'welcome#index'
 
-   resources :person  
+   resources :people
    resources :life_events
    resources :schools
 
