@@ -6,20 +6,30 @@ class PeopleController < ApplicationController
   end
 
   def show
-    @person.school
-    @person.life_events
+    @schools = @person.schools
+    @life_events = @person.life_events
   end
 
   def new
     @person = Person.new
   end
 
+  def create
+    @person = Person.create(person_params)
+    redirect_to @person, notice: 'New Person Created'
+  end
+
   def edit
   end
 
-  def create
-    @person = Person.new(person_params)
-    redirect_to @person, notice: 'New Person Created'
+  def update
+    respond_to do |format|
+      if @person.update(person_params)
+        format.html { redirect_to @person, notice: 'Person was successfully updated.' }
+      else
+        format.html { render :edit }
+      end
+    end
   end
 
   def destroy
@@ -28,13 +38,11 @@ class PeopleController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_person
       @person = Person.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def person_params
-      params.require(:person).permit(:name)
+      params.require(:person).permit(:first_name, :last_name)
     end
 end

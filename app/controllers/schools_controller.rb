@@ -3,7 +3,7 @@ class SchoolsController < ApplicationController
 
 
   def index
-    @schools = School.all
+    @schools = School.all.order(:start_year)
   end
 
   def show

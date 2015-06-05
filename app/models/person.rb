@@ -4,6 +4,6 @@ class Person < ActiveRecord::Base
   accepts_nested_attributes_for :schools, :life_events
 
   def full_name
-    self.first_name + " " + self.last_name
+    [first_name, last_name].join(' ')
   end
 end

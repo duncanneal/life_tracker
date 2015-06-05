@@ -1,9 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @person.Name %>
-</p>
+<h2><%= @person.full_name %></h2>
+
+ <h3> <%= @person.full_name %>'s Schools</h3>
+  <% @schools.each do |school| %>
+      <li>
+        <p><%= school.title %></p>
+        <ul>
+          <li>Start Year:<%= school.start_year %> </li>
+          <li>End Year:<%= school.end_year %> </li>
+        </ul>
+      </li>
+  <% end %>
+
+
+  <h3> <%= @person.full_name %>'s Life Events</h3>
+  <% @life_events.each do |life_event| %>
+      <li>
+        <p><%= life_event.title %></p>
+        <ul>
+          <li>Year:<%= life_event.year %> </li>
+          <li><%= life_event.description %> </li>
+        </ul>
+      </li>
+  <% end %>
 
 <%= link_to 'Edit', edit_person_path(@person) %> |
 <%= link_to 'Back', person_path %>
