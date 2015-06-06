@@ -2,10 +2,11 @@ class LifeEventsController < ApplicationController
   before_action :set_life_event, only: [:show, :edit, :update, :destroy]
 
   def index
-    @life_events = LifeEvent.all
+    @life_events = LifeEvent.all.order(:date)
   end
 
   def show
+     @life_events = LifeEvent.find(params[:id])
   end
 
   def new
@@ -52,6 +53,6 @@ class LifeEventsController < ApplicationController
     end
 
     def life_event_params
-      params.require(:life_event).permit(:title, :date, :description)
+      params.require(:life_event).permit(:title, :date, :description, :person_id)
     end
 end
