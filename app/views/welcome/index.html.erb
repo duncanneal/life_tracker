@@ -1,22 +1,68 @@
-<h1>Welcome to Life Tracker!</h1>
-<h2>Tracking schools you've attended and life events experienced!</h2>
+<nav class="top-bar" data-topbar role="navigation" data-options="is_hover: false" data-options="dropdown_autoclose: false">
 
-<h2>Recent Life Events</h2>
-  
-  <ul>
-    <% @recent_events.each do |event| %>
-       <li><%= event.title %>, <%= event.date %>, <%= event.person.full_name %></li>
-    <% end %>
+  <ul class="title-area">
+    <li class="name">
+      <h1><%= link_to 'Life Tracker!', root_path %></h1>
+    </li>
+     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
   </ul>
 
-  <h2> Recent Schools</h2>
-
-    <ul>
-      <% @recent_schools.each do |school| %>
-        <li><%= school.title %>, <%= school.start_year %> - <%= school.end_year %>, <%= school.person.full_name %></li>
-      <% end %>
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="left">
+      <li class="has-dropdown">
+        <a href="#">Tracking</a>
+        <ul class="dropdown">
+          <li><a href="/life_events">People</a></li>
+          <li><a href="/schools">Schools</a></li>
+          <li><a href="/people">Life Events</a></li>
+        </ul>
     </ul>
+  </section>
+</nav>
 
-<%= link_to 'People', people_path %>
+<h1>Welcome to Life Tracker</h1>
+  <table>
+  <thead>
+    <tr>
+      <th width="200">Person</th>
+      <th>School</th>
+      <th>Year Started</th>
+      <th>Year Finished</th>
+    </tr>
+  </thead>
+  <tbody>
+   <% @recent_schools.each do |school| %>
+    <tr>
+      <td><%= school.title %></td>
+      <td><%= school.start_year %> - <%= school.end_year %></li></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+  <table>
+  <thead>
+    <tr>
+      <th width="200">Person</th>
+      <th>Life Event</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+   <% @recent_events.each do |event| %>
+    <tr>
+      <td><%= event.title %></td>
+      <td><%= event.date %></td>
+      <td><%= event.description %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
 <%= link_to 'Life Events', life_events_path %>
 <%= link_to 'Schools', schools_path %>
