@@ -1,12 +1,8 @@
 class LifeEventsController < ApplicationController
-  before_action :set_life_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_life_event, only: [:edit, :update, :destroy]
 
   def index
     @life_events = LifeEvent.all.order(:date)
-  end
-
-  def show
-     @life_events = LifeEvent.find(params[:id])
   end
 
   def new
@@ -21,7 +17,7 @@ class LifeEventsController < ApplicationController
 
     respond_to do |format|
       if @life_event.save
-        format.html { redirect_to @life_event, notice: 'Life event was successfully created.' }
+        format.html { redirect_to @life_event.person, notice: 'Life event was successfully created.' }
       else
         format.html { render :new }
       end

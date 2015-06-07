@@ -1,12 +1,9 @@
 class SchoolsController < ApplicationController
-  before_action :set_school, only: [:show, :edit, :update, :destroy]
+  before_action :set_school, only: [:edit, :update, :destroy]
 
 
   def index
     @schools = School.all.order(:start_year)
-  end
-
-  def show
   end
 
   def new

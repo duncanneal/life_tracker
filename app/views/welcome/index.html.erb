@@ -5,7 +5,7 @@
   
   <ul>
     <% @recent_events.each do |event| %>
-      <li><%= event.title %>, <%= event.date %>, <%= event.description %></li>
+       <li><%= event.title %>, <%= event.date %>, <%= event.person.full_name %></li>
     <% end %>
   </ul>
 
@@ -13,7 +13,7 @@
 
     <ul>
       <% @recent_schools.each do |school| %>
-        <li><%= school.title %>, <%= school.start_year %> - <%= school.end_year %></li>
+        <li><%= school.title %>, <%= school.start_year %> - <%= school.end_year %>, <%= school.person.full_name %></li>
       <% end %>
     </ul>
 

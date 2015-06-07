@@ -11,9 +11,9 @@
     </div>
   <% end %>
 
-    <%= f.label (:person) %>
+  <div class="field">
     <%= f.collection_select(:person_id, Person.all, :id, :full_name) %>
-    
+  </div>  
   <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
