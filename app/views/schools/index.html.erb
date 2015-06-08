@@ -1,5 +1,27 @@
 <p id="notice"><%= notice %></p>
+<nav class="top-bar" data-topbar role="navigation" data-options="is_hover: false" data-options="dropdown_autoclose: false">
 
+  <ul class="title-area">
+    <li class="name">
+      <h1><%= link_to 'Life Tracker!', root_path %></h1>
+    </li>
+     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  </ul>
+
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="left">
+      <li class="has-dropdown">
+        <a href="#">Tracking</a>
+        <ul class="dropdown">
+          <li><a href="/life_events">People</a></li>
+          <li><a href="/schools">Schools</a></li>
+          <li><a href="/people">Life Events</a></li>
+        </ul>
+    </ul>
+  </section>
+</nav>
 <h1>Listing Schools</h1>
 
 <table>
@@ -19,9 +41,8 @@
         <td><%= school.title %></td>
         <td><%= school.start_year %></td>
         <td><%= school.end_year %></td>
-        <td><%= link_to 'Show', school %></td>
         <td><%= link_to 'Edit', edit_school_path(school) %></td>
-        <td><%= link_to 'Destroy', school, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', school, method: :delete, data: { confirm: 'Are you sure?' }, class: "button alert small" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -29,6 +50,6 @@
 
 <br>
 
-<%= link_to 'Welcome', root_path %>
+<%= link_to 'Welcome', root_path, class: "success button small" %>
 
-<%= link_to 'New School', new_school_path %>
+<%= link_to 'New School', new_school_path, class: "button secondary small" %>

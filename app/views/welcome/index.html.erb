@@ -7,22 +7,20 @@
      <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
     <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
   </ul>
-
   <section class="top-bar-section">
-    <!-- Right Nav Section -->
     <ul class="left">
       <li class="has-dropdown">
         <a href="#">Tracking</a>
         <ul class="dropdown">
-          <li><a href="/life_events">People</a></li>
+          <li><a href="/people">People</a></li>
           <li><a href="/schools">Schools</a></li>
-          <li><a href="/people">Life Events</a></li>
+          <li><a href="/life_events">Life Events</a></li>
         </ul>
     </ul>
   </section>
 </nav>
 
-<h1>Welcome to Life Tracker</h1>
+<h1>Tracking what's important:</h1>
   <table>
   <thead>
     <tr>
@@ -35,8 +33,10 @@
   <tbody>
    <% @recent_schools.each do |school| %>
     <tr>
+      <td><%= school.person.first_name %></td>
       <td><%= school.title %></td>
-      <td><%= school.start_year %> - <%= school.end_year %></li></td>
+      <td><%= school.start_year %></td>
+      <td><%= school.end_year %></td>
     </tr>
     <% end %>
   </tbody>
@@ -46,13 +46,15 @@
   <thead>
     <tr>
       <th width="200">Person</th>
-      <th>Life Event</th>
+      <th>Event</th>
+      <th>Date</th>
       <th>Description</th>
     </tr>
   </thead>
   <tbody>
    <% @recent_events.each do |event| %>
     <tr>
+      <td><%= event.person.first_name %></td>
       <td><%= event.title %></td>
       <td><%= event.date %></td>
       <td><%= event.description %></td>
@@ -63,6 +65,6 @@
 
 
 
-
-<%= link_to 'Life Events', life_events_path %>
-<%= link_to 'Schools', schools_path %>
+<%= link_to 'People', people_path, class: "button" %>
+<%= link_to 'Life Events', life_events_path, class: "button" %>
+<%= link_to 'Schools', schools_path, class: "button" %>

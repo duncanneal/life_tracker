@@ -13,7 +13,7 @@ class LifeEventsController < ApplicationController
   end
 
   def create
-    @life_event = LifeEvent.new(life_event_params)
+     @life_event = LifeEvent.new(life_event_params)
 
     respond_to do |format|
       if @life_event.save
@@ -24,22 +24,20 @@ class LifeEventsController < ApplicationController
     end
   end
 
-
   def update
     respond_to do |format|
       if @life_event.update(life_event_params)
-        format.html { redirect_to @life_event, notice: 'Life event was successfully updated.' }
+        format.html { redirect_to @life_event.person, notice: 'Life event was successfully updated.' }
       else
         format.html { render :edit }
       end
     end
   end
 
- 
   def destroy
     @life_event.destroy
     respond_to do |format|
-      format.html { redirect_to life_events_url, notice: 'Life event was successfully destroyed.' }
+      format.html { redirect_to @life_event.person, notice: 'Life event was successfully destroyed.' }
     end
   end
 

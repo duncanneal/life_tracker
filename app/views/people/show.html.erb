@@ -1,28 +1,70 @@
 <p id="notice"><%= notice %></p>
+<nav class="top-bar" data-topbar role="navigation" data-options="is_hover: false" data-options="dropdown_autoclose: false">
 
+  <ul class="title-area">
+    <li class="name">
+      <h1><%= link_to 'Life Tracker!', root_path %></h1>
+    </li>
+     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  </ul>
+
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="left">
+      <li class="has-dropdown">
+        <a href="#">Tracking</a>
+        <ul class="dropdown">
+          <li><a href="/life_events">People</a></li>
+          <li><a href="/schools">Schools</a></li>
+          <li><a href="/people">Life Events</a></li>
+        </ul>
+    </ul>
+  </section>
+</nav>
 <p>
 <strong>
   This is <%= @person.first_name %>'s life at a glance:
 </strong>
 </p>  
+<table>
+  <thead>
+    <tr>
+      <th width="200">School</th>
+      <th>Year Started</th>
+      <th>Year Finished</th>
+    </tr>
+  </thead>
+  <tbody>
+   <% @schools.each do |school| %>
+    <tr>
+      <td><%= school.title %></td>
+      <td><%= school.start_year %></td>
+      <td><%= school.end_year %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<h2>Schools</h2>
-  <ul>
-    <% @schools.each do |school| %>
-         <li><h4><%= school.title %>(<%= school.start_year %> - <%= school.end_year %>)</h4></li>
-  <% end %>
-</ul>
+  <table>
+  <thead>
+    <tr>
+      <th width="200">Event</th>
+      <th>Date</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+   <% @life_events.each do |event| %>
+    <tr>
+      <td><%= event.title %></td>
+      <td><%= event.date %></td>
+      <td><%= event.description %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 
 
-<h2>Life Events</h2>
-  <ul>
-    <% @life_events.each do |life_event| %>
-      <li><h4><%= life_event.title %></h4>
-          <h4><%= life_event.date %></h4>
-          <h4><%= life_event.description %></h4
-      </li>
-  <% end %>
-  </ul>
-
-<%= link_to 'Edit', edit_person_path(@person) %> |
-<%= link_to 'Back', people_path %>
+<%= link_to 'Edit', edit_person_path(@person), class: "button secondary small" %> |
+<%= link_to 'Back', people_path, class: "button secondary small" %>
